@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="script/script.js" defer></script>
+    <link rel="stylesheet" href="style/style.css" />
+    <title>Calculatrice Salaire</title>
+  </head>
+  <body>
+    <div id="root">
+      <table id="tableau">
+        <thead class="en-tete">
+          <!--En tête-->
+
+          <tr>
+            <th></th>
+            <th>Brut</th>
+            <th>Net</th>
+          </tr>
+        </thead>
+        <tbody class="corpTableau">
+          <!--Ligne 1-->
+          <tr>
+            <td>Mensuel</td>
+            <td>
+              Salaire annuel brut
+              <input
+                type="number"
+                @input="changerAnnuelBrut"
+                :value="annuelBrut"
+              />
+            </td>
+            <td :class="resultNet">{{annuelNet}}-€</td>
+          </tr>
+          <!--Ligne 2-->
+          <tr>
+            <td>Annuel</td>
+            <td :class="mensuelBrut" :value="afficherMensuelBrut">
+              {{brutMensuel}}-€
+            </td>
+            <td :class="netMensuel">{{netMensuel}}-€</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- checkbox cadre pour changer le type de calcul -->
+      <div class="alignItems">
+        <input
+          @click="switchToCadres"
+          :checked="cadres"
+          type="checkbox"
+          id="cadres"
+        />
+        <label for="cadres">Cadres</label>
+      </div>
+    </div>
+  </body>
+</html>
